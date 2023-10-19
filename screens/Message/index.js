@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native"; // Import useNavigation
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, StatusBar } from "react-native";
 import { UserContext } from "../../component/context";
 import * as Font from "expo-font";
 import { Sen_400Regular } from "@expo-google-fonts/sen";
@@ -11,20 +11,20 @@ const Message = () => {
   const [fontLoaded, setFontLoaded] = React.useState(false);
   const { getUser, setUser } = React.useContext(UserContext);
 
-  const loadFont = async () => {
-    await Font.loadAsync({
-      sen: Sen_400Regular,
-    });
-    setFontLoaded(true);
-  };
+  // const loadFont = async () => {
+  //   await Font.loadAsync({
+  //     sen: Sen_400Regular,
+  //   });
+  //   setFontLoaded(true);
+  // };
 
-  React.useEffect(() => {
-    loadFont();
-  }, []);
+  // React.useEffect(() => {
+  //   loadFont();
+  // }, []);
 
-  if (!fontLoaded) {
-    return null; // You can render a loading indicator here
-  }
+  // if (!fontLoaded) {
+  //   return null; // You can render a loading indicator here
+  // }
 
   return (
     <View
@@ -33,6 +33,7 @@ const Message = () => {
         justifyContent: "space-between",
         height: "100%",
         backgroundColor: "white",
+        marginTop: StatusBar.currentHeight,
       }}
     >
       <View style={{ gap: 20 }}>
@@ -40,7 +41,7 @@ const Message = () => {
           <Image source={require("../../assets/images/Profile.png")} />
 
           <View style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <Text style={{ fontWeight: 700, fontSize: 20, fontFamily: "sen" }}>
+            <Text style={{ fontWeight: 700, fontSize: 20 }}>
               {getUser.username === "" ? "John Deo" : getUser.username}
             </Text>
             <Text>View your details</Text>
@@ -58,14 +59,8 @@ const Message = () => {
             <Image source={require("../../assets/images/Group333.png")} />
 
             <View style={{ flexDirection: "column", gap: 8 }}>
-              <Text
-                style={{ fontWeight: 400, fontSize: 14, fontFamily: "sen" }}
-              >
-                FULL NAME
-              </Text>
-              <Text
-                style={{ fontWeight: 400, fontSize: 14, fontFamily: "sen" }}
-              >
+              <Text style={{ fontWeight: 400, fontSize: 14 }}>FULL NAME</Text>
+              <Text style={{ fontWeight: 400, fontSize: 14 }}>
                 {getUser.username === "" ? "John Deo" : getUser.username}
               </Text>
             </View>
@@ -75,14 +70,8 @@ const Message = () => {
             <Image source={require("../../assets/images/Group34.png")} />
 
             <View style={{ flexDirection: "column", gap: 8 }}>
-              <Text
-                style={{ fontWeight: 400, fontSize: 14, fontFamily: "sen" }}
-              >
-                Email
-              </Text>
-              <Text
-                style={{ fontWeight: 400, fontSize: 14, fontFamily: "sen" }}
-              >
+              <Text style={{ fontWeight: 400, fontSize: 14 }}>Email</Text>
+              <Text style={{ fontWeight: 400, fontSize: 14 }}>
                 {getUser.email === "" ? "hello@johndoe.co" : getUser.email}
               </Text>
             </View>
@@ -100,7 +89,7 @@ const Message = () => {
               email: "",
             });
           }}
-          style={{ fontWeight: 700, fontSize: 20, fontFamily: "sen" }}
+          style={{ fontWeight: 700, fontSize: 20 }}
         >
           Log Out
         </Text>

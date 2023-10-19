@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  StatusBar,
 } from "react-native";
 import YoutubePlayer from "react-native-youtube-iframe";
 import * as Font from "expo-font";
@@ -19,22 +20,22 @@ const ReceiptDetail = () => {
 
   const [fontLoaded, setFontLoaded] = React.useState(false);
 
-  const loadFont = async () => {
-    await Font.loadAsync({
-      sen: Sen_400Regular,
-    });
-    setFontLoaded(true);
-  };
+  // const loadFont = async () => {
+  //   await Font.loadAsync({
+  //     sen: Sen_400Regular,
+  //   });
+  //   setFontLoaded(true);
+  // };
 
-  React.useEffect(() => {
-    loadFont();
-  }, []);
+  // React.useEffect(() => {
+  //   loadFont();
+  // }, []);
 
-  if (!fontLoaded) {
-    return null; // You can render a loading indicator here
-  }
+  // if (!fontLoaded) {
+  //   return null; // You can render a loading indicator here
+  // }
   return (
-    <View>
+    <View style={{ marginTop: StatusBar.currentHeight }}>
       {getFullMealsById.map((item) => (
         <View key={item.idMeal}>
           <View
@@ -54,7 +55,7 @@ const ReceiptDetail = () => {
             </TouchableOpacity>
           </View>
           <ScrollView style={{ padding: 20, gap: 10, height: 430 }}>
-            <Text style={{ fontWeight: 700, fontSize: 20, fontFamily: "sen" }}>
+            <Text style={{ fontWeight: 700, fontSize: 20 }}>
               {item.strCategory}
             </Text>
             <Text
@@ -62,7 +63,7 @@ const ReceiptDetail = () => {
                 fontWeight: 400,
                 fontSize: 14,
                 marginTop: 10,
-                fontFamily: "sen",
+                //
               }}
             >
               {item.strInstructions.length > 100
@@ -73,9 +74,7 @@ const ReceiptDetail = () => {
             <ScrollView horizontal={true}>
               <View style={{ flexDirection: "row", gap: 20 }}>
                 <View style={[styles.card, styles.shadowProp]}>
-                  <Text
-                    style={{ fontFamily: "sen", fontSize: 16, fontWeight: 400 }}
-                  >
+                  <Text style={{ fontSize: 16, fontWeight: 400 }}>
                     {item.strTags}
                   </Text>
                 </View>
@@ -104,96 +103,58 @@ const ReceiptDetail = () => {
               }}
             >
               <View style={{ gap: 8 }}>
-                <Text
-                  style={{ fontWeight: 700, fontSize: 15, fontFamily: "sen" }}
-                >
+                <Text style={{ fontWeight: 700, fontSize: 15 }}>
                   Ingredient
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strIngredient1}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strIngredient2}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strIngredient3}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strIngredient4}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strIngredient5}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strIngredient6}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strIngredient7}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strIngredient8}
                 </Text>
               </View>
               <View style={{ gap: 8 }}>
-                <Text
-                  style={{ fontWeight: 700, fontSize: 15, fontFamily: "sen" }}
-                >
-                  Measure
-                </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontWeight: 700, fontSize: 15 }}>Measure</Text>
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strMeasure1}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strMeasure2}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strMeasure3}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strMeasure4}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strMeasure5}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strMeasure6}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strMeasure7}
                 </Text>
-                <Text
-                  style={{ fontFamily: "sen", fontSize: 13, fontWeight: 400 }}
-                >
+                <Text style={{ fontSize: 13, fontWeight: 400 }}>
                   {item.strMeasure8}
                 </Text>
               </View>
@@ -231,7 +192,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   textStyle: {
-    fontFamily: "sen",
     fontSize: 13,
     fontWeight: 400,
   },

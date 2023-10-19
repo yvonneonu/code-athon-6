@@ -15,13 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yvonne231.codeathon6"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.yvonne231.codeathon6"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,6 +38,12 @@
       "eas": {
         "projectId": "21992b8b-4941-4db2-a37a-5a96c993ad67"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/21992b8b-4941-4db2-a37a-5a96c993ad67"
     }
   }
 }

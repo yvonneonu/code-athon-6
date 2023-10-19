@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  StatusBar,
 } from "react-native";
 import MealService from "../../services/mealServices";
 import * as Font from "expo-font";
@@ -25,16 +26,16 @@ const HomePage = () => {
 
   const [fontLoaded, setFontLoaded] = React.useState(false);
 
-  const loadFont = async () => {
-    await Font.loadAsync({
-      sen: Sen_400Regular,
-    });
-    setFontLoaded(true);
-  };
+  // const loadFont = async () => {
+  //   await Font.loadAsync({
+  //     sen: Sen_400Regular,
+  //   });
+  //   setFontLoaded(true);
+  // };
 
-  React.useEffect(() => {
-    loadFont();
-  }, []);
+  // React.useEffect(() => {
+  //   loadFont();
+  // }, []);
 
   React.useEffect(() => {
     // Filter out duplicate categories and set them in state
@@ -107,20 +108,22 @@ const HomePage = () => {
     }
   };
 
-  if (!fontLoaded) {
-    return null; // You can render a loading indicator here
-  }
+  // if (!fontLoaded) {
+  //   return null; // You can render a loading indicator here
+  // }
 
   return (
-    <View style={{ padding: 20, backgroundColor: "white" }}>
+    <View
+      style={{
+        padding: 20,
+        backgroundColor: "white",
+        marginTop: StatusBar.currentHeight,
+      }}
+    >
       <View style={{ flexDirection: "row", gap: 8, alignItems: "center" }}>
-        <Text style={{ fontWeight: 400, fontSize: 16, fontFamily: "sen" }}>
-          Hey User,
-        </Text>
+        <Text style={{ fontWeight: 400, fontSize: 16 }}>Hey User,</Text>
 
-        <Text style={{ fontWeight: 700, fontSize: 16, fontFamily: "sen" }}>
-          Good Afternoon!
-        </Text>
+        <Text style={{ fontWeight: 700, fontSize: 16 }}>Good Afternoon!</Text>
       </View>
       <View
         style={{
@@ -145,9 +148,7 @@ const HomePage = () => {
       </View>
 
       <View style={{ marginTop: 20 }}>
-        <Text style={{ fontWeight: 700, fontSize: 20, fontFamily: "sen" }}>
-          All Categories
-        </Text>
+        <Text style={{ fontWeight: 700, fontSize: 20 }}>All Categories</Text>
       </View>
 
       <ScrollView horizontal={true}>
@@ -170,9 +171,7 @@ const HomePage = () => {
                 source={{ uri: item.strMealThumb }}
                 style={{ width: 40, height: 40, borderRadius: 20 }}
               />
-              <Text
-                style={{ fontFamily: "sen", fontWeight: 700, fontSize: 14 }}
-              >
+              <Text style={{ fontWeight: 700, fontSize: 14 }}>
                 {item.strCategory}
               </Text>
             </TouchableOpacity>
@@ -181,9 +180,7 @@ const HomePage = () => {
       </ScrollView>
 
       <View style={{ marginTop: 20 }}>
-        <Text style={{ fontWeight: 700, fontSize: 20, fontFamily: "sen" }}>
-          Recipe List
-        </Text>
+        <Text style={{ fontWeight: 700, fontSize: 20 }}>Recipe List</Text>
       </View>
 
       <ScrollView style={{ height: 400, marginTop: 40 }}>
@@ -199,9 +196,7 @@ const HomePage = () => {
                   style={styles.backgroundView}
                 />
                 <Text style={styles.name}>{item.strMeal}</Text>
-                <Text
-                  style={{ fontFamily: "sen", fontWeight: 400, fontSize: 14 }}
-                >
+                <Text style={{ fontWeight: 400, fontSize: 14 }}>
                   {item.strTags}
                 </Text>
               </TouchableOpacity>
@@ -226,11 +221,9 @@ const HomePage = () => {
 };
 
 const styles = StyleSheet.create({
-  stretch: {
-    // flex: 1,
+  background: {
     alignItems: "center",
     justifyContent: "center",
-    // backgroundColor: "red",
     height: "100%",
   },
   image: {
@@ -272,7 +265,7 @@ const styles = StyleSheet.create({
     width: 400,
     height: 61,
     borderWidth: 1,
-    fontFamily: "sen",
+
     fontWeight: 400,
     fontSize: 20,
   },

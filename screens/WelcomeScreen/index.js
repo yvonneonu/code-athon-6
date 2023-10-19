@@ -1,14 +1,23 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native"; // Import useNavigation
-import { Button, View, Text, StyleSheet, TextInput } from "react-native";
+import {
+  Button,
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  StatusBar,
+} from "react-native";
 import { UserContext } from "../../component/context";
-import { Sen_400Regular } from "@expo-google-fonts/sen";
-import * as Font from "expo-font";
+import { Sen } from "../../assets/fonts/Sen-Bold.ttf";
+import { Semi } from "../../assets/fonts/Sen-SemiBold.ttf";
+import { useFonts } from "expo-font";
 
 const WelcomeScreen = () => {
   const navigation = useNavigation(); // Get the navigation prop using useNavigation()
-  const [fontLoaded, setFontLoaded] = React.useState(false);
-
+  const [fontsLoaded] = useFonts({
+    "Sen-Bold": require("../../assets/fonts/Sen-Bold.ttf"),
+  });
   const handlePress = () => {
     navigation.navigate("Login");
   };
@@ -27,18 +36,6 @@ const WelcomeScreen = () => {
     }));
     navigation.navigate("HomePage");
   };
-
-  const loadFont = async () => {
-    await Font.loadAsync({
-      sen: Sen_400Regular,
-    });
-    setFontLoaded(true);
-  };
-
-  React.useEffect(() => {
-    loadFont();
-  }, []);
-
   const handleInputChange = (field, val) => {
     setData({
       ...data,
@@ -46,12 +43,19 @@ const WelcomeScreen = () => {
     });
   };
 
-  if (!fontLoaded) {
-    return null; // You can render a loading indicator here
+  if (!fontsLoaded) {
+    return null;
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#1E1E2E", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#1E1E2E",
+        alignItems: "center",
+        marginTop: StatusBar.currentHeight,
+      }}
+    >
       <View
         style={{
           height: 200,
@@ -67,7 +71,8 @@ const WelcomeScreen = () => {
             color: "white",
             fontWeight: 700,
             fontSize: 30,
-            fontFamily: "sen",
+            // fontFamily: Semi,
+            //
           }}
         >
           Log In
@@ -76,8 +81,9 @@ const WelcomeScreen = () => {
           style={{
             color: "white",
             fontSize: 16,
-            fontFamily: "sen",
+            //
             fontWeight: 400,
+            // fontFamily: "Sen-Bold",
           }}
         >
           Please sign in to your existing account
@@ -110,7 +116,7 @@ const WelcomeScreen = () => {
               textAlign: "left",
               fontWeight: 400,
               fontSize: 14,
-              fontFamily: "sen",
+              //
             }}
           >
             EMAIL
@@ -129,7 +135,7 @@ const WelcomeScreen = () => {
               marginTop: 10,
               fontWeight: 400,
               fontSize: 14,
-              fontFamily: "sen",
+              //
             }}
           >
             PASSWORD
@@ -161,7 +167,7 @@ const WelcomeScreen = () => {
                 style={{
                   fontWeight: 400,
                   fontSize: 13,
-                  fontFamily: "sen",
+
                   color: "#7E8A97",
                 }}
               >
@@ -171,7 +177,7 @@ const WelcomeScreen = () => {
             <Text
               style={{
                 color: "#FF7622",
-                fontFamily: "sen",
+
                 fontWeight: 400,
                 fontSize: 14,
               }}
@@ -201,7 +207,6 @@ const WelcomeScreen = () => {
                 color: "#646982",
                 fontWeight: 400,
                 fontSize: 16,
-                fontFamily: "sen",
               }}
             >
               Don’t have an account?
@@ -211,7 +216,6 @@ const WelcomeScreen = () => {
                 color: "#FF7622",
                 fontWeight: 700,
                 fontSize: 14,
-                fontFamily: "sen",
               }}
               onPress={() => handlePress()}
             >
@@ -280,6 +284,14 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     padding: 10,
     width: "100%",
+  },
+
+  perftom: {
+    color: "white",
+    fontSize: 16,
+    //
+    fontWeight: 400,
+    fontFamily: "Sen-Bold",
   },
 });
 export default WelcomeScreen;

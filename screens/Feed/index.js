@@ -9,6 +9,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import { UserContext } from "../../component/context";
 import * as Font from "expo-font";
@@ -47,22 +48,22 @@ const Feed = () => {
 
   const [fontLoaded, setFontLoaded] = React.useState(false);
 
-  const loadFont = async () => {
-    await Font.loadAsync({
-      sen: Sen_400Regular,
-    });
-    setFontLoaded(true);
-  };
+  // const loadFont = async () => {
+  //   await Font.loadAsync({
+  //     sen: Sen_400Regular,
+  //   });
+  //   setFontLoaded(true);
+  // };
 
-  React.useEffect(() => {
-    loadFont();
-  }, []);
+  // React.useEffect(() => {
+  //   loadFont();
+  // }, []);
 
-  if (!fontLoaded) {
-    return null; // You can render a loading indicator here
-  }
+  // if (!fontLoaded) {
+  //   return null; // You can render a loading indicator here
+  // }
   return (
-    <View style={{ flex: 1, backgroundColor: "#1E1E2E", alignItems: "center" }}>
+    <View style={styles.cont}>
       <View
         style={{
           height: 200,
@@ -71,6 +72,7 @@ const Feed = () => {
           justifyContent: "flex-end",
           gap: 10,
           marginBottom: 80,
+          // fontFamily: Sen_400Regular,
         }}
       >
         <TouchableOpacity
@@ -85,7 +87,6 @@ const Feed = () => {
             color: "white",
             fontWeight: 700,
             fontSize: 30,
-            fontFamily: "sen",
           }}
         >
           Sign Up
@@ -93,7 +94,7 @@ const Feed = () => {
         <Text
           style={{
             color: "white",
-            fontFamily: "sen",
+
             fontSize: 16,
             fontWeight: 400,
           }}
@@ -127,7 +128,7 @@ const Feed = () => {
             <Text
               style={{
                 textAlign: "left",
-                fontFamily: "sen",
+
                 fontSize: 13,
                 fontWeight: 400,
               }}
@@ -146,7 +147,7 @@ const Feed = () => {
               style={{
                 textAlign: "left",
                 marginTop: 10,
-                fontFamily: "sen",
+
                 fontSize: 13,
                 fontWeight: 400,
               }}
@@ -165,7 +166,7 @@ const Feed = () => {
               style={{
                 textAlign: "left",
                 marginTop: 10,
-                fontFamily: "sen",
+
                 fontSize: 13,
                 fontWeight: 400,
               }}
@@ -204,7 +205,6 @@ const Feed = () => {
                   color: "#646982",
                   fontWeight: 400,
                   fontSize: 16,
-                  fontFamily: "sen",
                 }}
               >
                 Already have an account?
@@ -215,7 +215,6 @@ const Feed = () => {
                     color: "#FF7622",
                     fontWeight: 700,
                     fontSize: 14,
-                    fontFamily: "sen",
                   }}
                 >
                   LOG IN
@@ -231,10 +230,8 @@ const Feed = () => {
 
 const styles = StyleSheet.create({
   stretch: {
-    // flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    // backgroundColor: "red",
     height: "100%",
   },
 
@@ -280,6 +277,12 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     padding: 10,
     width: "100%",
+  },
+  cont: {
+    flex: 1,
+    backgroundColor: "#1E1E2E",
+    alignItems: "center",
+    marginTop: StatusBar.currentHeight,
   },
 });
 export default Feed;
